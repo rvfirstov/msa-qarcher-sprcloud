@@ -1,22 +1,22 @@
 server:
-  port: ${SERVICE_PORT:7081}
+  port: 7081
 
 mdp.discovery:
   discoveryClientName: ${DISCOVERY_CLIENT_NAME:disable}
 
-security: 
-  enabled: ${SECURITY_ENABLED:false} 
-  oauth2: 
-    client: 
+security:
+  enabled: ${SECURITY_ENABLED:false}
+  oauth2:
+    client:
       clientId:
-      clientSecret: 
+      clientSecret:
       scope:
       accessTokenUri:
       userAuthorizationUri:
-    resource: 
-      jwt: 
+    resource:
+      jwt:
         key-uri:
-        
+
 spring:
 # Postgres
   datasource:
@@ -32,7 +32,7 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
-      naming: 
+      naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
@@ -56,7 +56,7 @@ spring:
 #    generate-ddl: false
 #    hibernate:
 #      ddl-auto: none
-#      naming: 
+#      naming:
 #        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 #    properties:
 #      hibernate:
@@ -76,11 +76,11 @@ spring:
 #    database-platform: ${JPA_DIALECT:org.hibernate.dialect.H2Dialect}
 #    generate-ddl: ${GENERATE_DDL:true}
 #    hibernate:
-#      naming: 
+#      naming:
 #        physical-strategy: ${JPA_STRATEGY:ru.diasoft.micro.lib.config.H2PhysicalNamingStrategy}
 # Generate Events Publisher or Subsriber
   kafka:
-    bootstrap-servers: ${KAFKA_URL:localhost:9092}     
+    bootstrap-servers: ${KAFKA_URL:localhost:9092}
     admin:
       properties:
         request.timeout.ms: ${KAFKA_REQUEST_TIMEOUT:5000}
