@@ -8,18 +8,26 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import lombok.Generated;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableDiscoveryClient
+@EnableAutoConfiguration
 @EnableCaching
-@SpringBootApplication(scanBasePackages = "ru.diasoft.micro")
-@Generated
-@SuppressWarnings({"java:S4604"})
+@SpringBootApplication
+@ComponentScan({"ru.diasoft.micro", "ru.diasoft.micro.service"})
+@EnableJpaRepositories({"ru.diasoft.micro"})
+@EntityScan({"ru.diasoft.micro", "ru.diasoft.micro.service"})
 public class DemoApplication {
 
     private static final Logger logger = LogManager.getLogger(DemoApplication.class);
