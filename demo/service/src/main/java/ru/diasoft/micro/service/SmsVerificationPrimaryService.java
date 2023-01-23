@@ -54,8 +54,8 @@ public class SmsVerificationPrimaryService implements SmsVerificationService {
                 .build();
         repository.save(smsVerification);
 
-//        messagingGateway.smsVerificationCreated(
-//                SmsVerificationMessage.builder().guid(guid).code(secretCode).phoneNumber(phoneNumber).build());
+        messagingGateway.smsVerificationCreated(
+                SmsVerificationMessage.builder().guid(guid).code(secretCode).phoneNumber(phoneNumber).build());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResultResponseFordsSmsVerificationPOSTnonews_v10_SmsVerification(guid));
     }

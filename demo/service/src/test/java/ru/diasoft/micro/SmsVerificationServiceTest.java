@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.diasoft.micro.domain.SmsVerification;
 import ru.diasoft.micro.model.ResultResponseFordsSmsVerificationGETnonews_v10_SmsVerification;
@@ -20,7 +21,7 @@ import ru.diasoft.micro.model.ResultResponseFordsSmsVerificationPOSTnonews_v10_S
 import ru.diasoft.micro.repository.SmsVerificationRepository;
 import ru.diasoft.micro.service.SmsVerificationPrimaryService;
 
-//import ru.diasoft.micro.service.smsverificationcreated.publish.SmsVerificationCreatedPublishGateway;
+import ru.diasoft.micro.service.smsverificationcreated.publish.SmsVerificationCreatedPublishGateway;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,8 +30,8 @@ public class SmsVerificationServiceTest {
     @Mock
     private SmsVerificationRepository repository;
 
-//    @Mock
-//    private SmsVerificationCreatedPublishGateway messagingGateway;
+    @Mock
+    private SmsVerificationCreatedPublishGateway messagingGateway;
 
 
     private SmsVerificationPrimaryService service;
@@ -43,7 +44,7 @@ public class SmsVerificationServiceTest {
 
     @Before
     public void init() {
-//        service = new SmsVerificationPrimaryService(repository, messagingGateway);
+        service = new SmsVerificationPrimaryService(repository, messagingGateway);
         service = new SmsVerificationPrimaryService(repository);
 
         SmsVerification smsVerification = SmsVerification.builder()
